@@ -42,7 +42,7 @@ async function loadMessages() {
     
     try {
         if (loadingIndicator) loadingIndicator.style.display = 'block';
-        const response = await fetch(`${APPS_SCRIPT_URL}?t=${Date.now()}`);
+        const response = await fetch(`${"https://script.google.com/macros/s/AKfycbwoF9HA8PQDDb1biLu729ZfTYU4HkYLs2n9m8fgdcIEGfBbxsabU6Cyt0qc_ogC2EcF/exec"}?t=${Date.now()}`);
         const data = await response.json();
         
         if (data.messages && Array.isArray(data.messages)) {
