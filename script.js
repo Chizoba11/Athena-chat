@@ -66,13 +66,13 @@ async function loadMessages() {
 
 async function saveMessage(messageText) {
     // ✅ FIXED: Better URL check
-    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes('https://script.google.com/macros/s/AKfycbwoF9HA8PQDDb1biLu729ZfTYU4HkYLs2n9m8fgdcIEGfBbxsabU6Cyt0qc_ogC2EcF/exec')) {
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes("https://script.google.com/macros/s/AKfycbwoF9HA8PQDDb1biLu729ZfTYU4HkYLs2n9m8fgdcIEGfBbxsabU6Cyt0qc_ogC2EcF/exec")) {
         showToast('⚠️ Please configure the Apps Script URL', 'error');
         return false;
     }
     
     try {
-        const response = await fetch(APPS_SCRIPT_URL, {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbwoF9HA8PQDDb1biLu729ZfTYU4HkYLs2n9m8fgdcIEGfBbxsabU6Cyt0qc_ogC2EcF/exec", {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
