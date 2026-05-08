@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#667eea">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SharedMsg">
+  <title>Shared Message Board - Talk with Friends</title>
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="https://i.imgur.com/SL7f1uD.png">
+  <meta name="msapplication-TileImage" content="https://i.imgur.com/SL7f1uD.png">
+  <meta name="msapplication-TileColor" content="#667eea">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>💬 Shared Message Board</h1>
+      <div class="user-info" id="userInfo">
+        <span class="status" id="status">🟢 Connected</span>
+        <button id="changeUserBtn" class="btn-small">👤 Change Name</button>
+      </div>
+    </div>
+    
+    <div class="input-group">
+      <input type="text" id="messageInput" placeholder="Type your message..." maxlength="500" autocomplete="off">
+      <div class="button-group">
+        <button id="postBtn" class="btn-primary">📤 Send Message</button>
+      </div>
+    </div>
+    
+    <div class="messages-container">
+      <div class="messages-header">
+        <span>📝 All Messages</span>
+        <div class="header-buttons">
+          <button id="refreshBtn" class="btn-icon" title="Refresh">🔄</button>
+          <button id="onlineCountBtn" class="btn-icon" title="Who's online?">👥</button>
+        </div>
+      </div>
+      <div id="messages" class="messages"></div>
+      <div id="loadingIndicator" class="loading" style="display: none;">
+        <div class="spinner"></div>
+        Loading messages...
+      </div>
+    </div>
+  </div>
+  
+  <script src="./script.js"></script>
+  
+  <!-- PWA Service Worker Registration -->
+  <script>
+  if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./service-worker.js')
+        .then(registration => {
+          console.log('Service Worker registered');
+        })
+        .catch(error => {
+          console.log('Service Worker failed:', error);
+        });
+    });
+  }
+  </script>
+</body>
+</html>
